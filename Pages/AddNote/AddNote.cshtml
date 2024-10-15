@@ -1,0 +1,46 @@
+@page
+@model StudentNoteApp.Pages.AddNoteModel
+@{
+    ViewData["Title"] = "Add a Note";
+}
+
+<h2>Add a Note for a Student</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="StudentId">Student</label>
+        <select id="StudentId" name="Note.StudentId" class="form-control" required>
+            @foreach (var student in Model.Students)
+            {
+                <option value="@student.Id">@student.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="SubjectId">Subject</label>
+        <select id="SubjectId" name="Note.SubjectId" class="form-control" required>
+            @foreach (var subject in Model.Subjects)
+            {
+                <option value="@subject.Id">@subject.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="DetailsOfEvent">Details of Event</label>
+        <textarea id="DetailsOfEvent" name="Note.DetailsOfEvent" class="form-control" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <input type="text" id="Description" name="Note.Description" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Date">Date</label>
+        <input type="date" id="Date" name="Note.Date" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Note</button>
+</form>
